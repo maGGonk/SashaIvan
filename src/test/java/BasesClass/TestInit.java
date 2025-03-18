@@ -24,7 +24,6 @@ public class TestInit {
 
     public void openUrl(String url) {
         driver.get(url);
-
     }
 
 }

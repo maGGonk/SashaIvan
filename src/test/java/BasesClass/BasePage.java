@@ -8,14 +8,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePage {
 
-
     public WebDriver driver;
     public WebDriverWait wait;
 
-
-    public BasePage(WebDriver driver){
+    public BasePage(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver,20);
+        this.wait = new WebDriverWait(driver, 20);
     }
 
     public WebElement visibilityOfElementByXpath(String locator) {

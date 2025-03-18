@@ -12,7 +12,6 @@ import pages.ShippingInformationPage;
 
 import static java.lang.Thread.sleep;
 
-
 public class HomePageTest extends TestInit {
 
     public String alloUrl = "https://allo.ua";
@@ -25,8 +24,6 @@ public class HomePageTest extends TestInit {
         openUrl(alloUrl);
 
         Assert.assertTrue(homePage.alloLogo().isDisplayed());
-
-
     }
 
     @Test
@@ -35,16 +32,17 @@ public class HomePageTest extends TestInit {
         HomePage homePage = new HomePage(driver);
         SearchResultPage searchResultPage = new SearchResultPage(driver);
 
+        String nameFirstSearchGoods ="Фен";
+
         openUrl(alloUrl);
 
         Assert.assertTrue(homePage.searchField().isDisplayed());
 
-        homePage.searchField().sendKeys("Фен");
-        homePage.searchButton().click();
+        homePage.enterValuesInSearchField(nameFirstSearchGoods);
+        homePage.clickSearchButton();
 
-        Assert.assertTrue(searchResultPage.firstGoods().getText().contains("Фен"));
+        Assert.assertTrue(searchResultPage.getFirsGoodsText().contains(nameFirstSearchGoods));
     }
-
 
     @Test
     public void checkAirPodsDisplay() {
@@ -62,15 +60,12 @@ public class HomePageTest extends TestInit {
         homePage.clickSearchButton();
 
         String expectedNameFirstAirPods = searchResultPage.getNameFirstAirPods();
-        Assert.assertTrue(expectedNameFirstAirPods.contains("AirPods 3"));
-        searchResultPage.ckickFirstAirPods();
+        Assert.assertTrue(expectedNameFirstAirPods.contains(airPods));
+        searchResultPage.clickFirstAirPods();
 
         String actualNameAirPods = goodsPage.getNameProductTitle();
 
-
         Assert.assertEquals(actualNameAirPods, expectedNameFirstAirPods);
-
-
     }
 
     @Test
@@ -78,6 +73,9 @@ public class HomePageTest extends TestInit {
 
         HomePage homePage = new HomePage(driver);
         ShippingInformationPage shippingInformationPage = new ShippingInformationPage(driver);
+
+        String nameTitleText = "Доставка і оплата";
+        String nameCheckOutProcessText = "Як оформити замовлення?";
 
         openUrl(alloUrl);
 
@@ -87,15 +85,9 @@ public class HomePageTest extends TestInit {
         homePage.deliveryPaymentButtonDisplayed();
         homePage.clickDeliveryPaymentButton();
 
-        String nameTitleText = shippingInformationPage.getTitle();
-        Assert.assertTrue(nameTitleText.contains("Доставка і оплата"));
-        System.out.println("Доставка і оплата");
+        Assert.assertTrue(shippingInformationPage.getTitleText().contains(nameTitleText));
 
-        String nameCheckOutProcessText = shippingInformationPage.getCheckOutProcess();
-        Assert.assertTrue(nameCheckOutProcessText.contains("Як оформити замовлення?"));
-        System.out.println("Як оформити замовлення?");
-
-
+        Assert.assertTrue(shippingInformationPage.getCheckOutProcess().contains(nameCheckOutProcessText));
     }
 
 }
