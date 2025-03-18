@@ -14,15 +14,10 @@ public class HomePage extends BasePage {
 
     private final String ALLO_LOGO = "//a[@class='v-logo']";
     private final String SEARCH_FIELD = "//input[@id='search-form__input']";
-
     private final String SEARCH_BUTTON = "//button[@class='search-form__submit-button']";
-
     private final String CLIENTS_BUTTON = "//a[@class='mh-button mh-button--open']";
-
     private final String DROP_DOWN_MENU = "//div[@class='mh-button__dropdown']";
-
     private final String DILIVERI_PAYMENT_BUTTON = "//a[@href='https://allo.ua/ua/help/shipment_payment/']";
-
 
     public WebElement alloLogo() {
         return visibilityOfElementByXpath(ALLO_LOGO);
@@ -45,12 +40,9 @@ public class HomePage extends BasePage {
         return visibilityOfElementByXpath(DROP_DOWN_MENU);
     }
 
-    public WebElement deliveryPaymentButton(){
+    public WebElement deliveryPaymentButton() {
         return visibilityOfElementByXpath(DILIVERI_PAYMENT_BUTTON);
     }
-
-
-    //ACTIONS WITH ELEMENTS
 
     public void alloLogoDisplayed() {
         alloLogo().isDisplayed();
@@ -66,7 +58,6 @@ public class HomePage extends BasePage {
 
     public void clientsButtonDisplayed() {
         clientsButton().isDisplayed();
-
     }
 
     public void clickClientsButton() {
@@ -76,10 +67,13 @@ public class HomePage extends BasePage {
     public void dropDownMenuDisplayed() {
         dropDownMenu().isDisplayed();
     }
-    public void deliveryPaymentButtonDisplayed(){
+
+    public void deliveryPaymentButtonDisplayed() {
         deliveryPaymentButton().isDisplayed();
     }
-    public void clickDeliveryPaymentButton(){
+
+    public void clickDeliveryPaymentButton() {
         deliveryPaymentButton().click();
     }
+
 }

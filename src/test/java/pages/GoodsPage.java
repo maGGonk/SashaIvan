@@ -10,22 +10,14 @@ public class GoodsPage extends BasePage {
         super(driver);
     }
 
-    private final String PRODUCT_TITLE ="//h1[@class='p-view__header-title']";
+    private final String PRODUCT_TITLE = "//h1[@class='p-view__header-title']";
 
-          //WEB ELEMENTS
-
-    public WebElement productTitle(){
+    public WebElement productTitle() {
         return visibilityOfElementByXpath(PRODUCT_TITLE);
     }
 
-
-    //ACTIONS WITH ELEMENTS
-
-   public String getNameProductTitle(){
+    public String getNameProductTitle() {
         return productTitle().getText();
-   }
-
-
-
+    }
 
 }
