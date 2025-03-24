@@ -22,6 +22,7 @@ public class BasePage {
     public WebElement visibilityOfElementByXpath(String locator) {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
     }
+
      public List<WebElement> visibilityOfElementsLocatorByXpath(String locator){
          wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
          return driver.findElements(By.xpath(locator));
