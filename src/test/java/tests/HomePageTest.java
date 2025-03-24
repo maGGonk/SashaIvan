@@ -1,7 +1,6 @@
 package tests;
 
 import BasesClass.TestInit;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -9,8 +8,6 @@ import pages.GoodsPage;
 import pages.HomePage;
 import pages.SearchResultPage;
 import pages.ShippingInformationPage;
-
-import static java.lang.Thread.sleep;
 
 public class HomePageTest extends TestInit {
 
@@ -32,7 +29,7 @@ public class HomePageTest extends TestInit {
         HomePage homePage = new HomePage(driver);
         SearchResultPage searchResultPage = new SearchResultPage(driver);
 
-        String nameFirstSearchGoods ="Фен";
+        String nameFirstSearchGoods = "Фен";
 
         openUrl(alloUrl);
 
@@ -88,6 +85,55 @@ public class HomePageTest extends TestInit {
         Assert.assertTrue(shippingInformationPage.getTitleText().contains(nameTitleText));
 
         Assert.assertTrue(shippingInformationPage.getCheckOutProcess().contains(nameCheckOutProcessText));
+    }
+
+    @Test
+    public void checkResultSearchField() {
+
+        HomePage homePage = new HomePage(driver);
+        SearchResultPage searchResultPage = new SearchResultPage(driver);
+
+        String samsungTV = "Телевізор Samsung";
+        String expectedNameTV = "Samsung";
+        int expectedSizeProducts = 28;
+
+        openUrl(alloUrl);
+
+        homePage.enterValuesInSearchField(samsungTV);
+        homePage.clickSearchButton();
+
+        searchResultPage.viewModelButtonDisplayed();
+        int sizeProducts = searchResultPage.namesSearchProducts().size();
+        Assert.assertEquals(sizeProducts, expectedSizeProducts);
+
+        for (WebElement element : searchResultPage.namesSearchProducts()) {
+            Assert.assertTrue(element.getText().contains(expectedNameTV));
+        }
+
+    }
+
+    @Test
+    public void checkResultComments() {
+
+        HomePage homePage = new HomePage(driver);
+        SearchResultPage searchResultPage = new SearchResultPage(driver);
+
+        String samsungTV = "Телевізор Samsung";
+
+        openUrl(alloUrl);
+
+        homePage.enterValuesInSearchField(samsungTV);
+        homePage.clickSearchButton();
+
+        for (WebElement element : searchResultPage.commentsSamsung()) {
+            String numberComments = element.getText();
+            int number = Integer.parseInt(numberComments);
+            if (number > 27) {
+                System.out.println(number);
+            }
+
+        }
+
     }
 
 }
