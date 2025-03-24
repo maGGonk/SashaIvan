@@ -19,6 +19,7 @@ public class HomePage extends BasePage {
     private final String DROP_DOWN_MENU = "//div[@class='mh-button__dropdown']";
     private final String DILIVERI_PAYMENT_BUTTON = "//a[@href='https://allo.ua/ua/help/shipment_payment/']";
 
+
     public WebElement alloLogo() {
         return visibilityOfElementByXpath(ALLO_LOGO);
 
@@ -43,6 +44,7 @@ public class HomePage extends BasePage {
     public WebElement deliveryPaymentButton() {
         return visibilityOfElementByXpath(DILIVERI_PAYMENT_BUTTON);
     }
+
 
     public void alloLogoDisplayed() {
         alloLogo().isDisplayed();
